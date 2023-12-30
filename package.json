@@ -1,0 +1,9 @@
+{
+  "name": "srf-meteo-exporter",
+  "version": "0.0.0",
+  "description": "Prometheus Exporter for SRF Meteo Data",
+  "main": "index.js",
+  "repository": "https://github.com/simonalbrecht/srf-meteo-exporter.git",
+  "author": "Simon Albrecht <simon@simonalbrecht.ch>",
+  "license": "MIT"
+}
