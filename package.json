@@ -2,12 +2,39 @@
   "name": "srf-meteo-exporter",
   "version": "0.0.0",
   "description": "Prometheus Exporter for SRF Meteo Data",
-  "main": "index.js",
+  "main": "./src/index.ts",
+  "exports": "./dist/index.js",
   "repository": "https://github.com/simonalbrecht/srf-meteo-exporter.git",
   "author": "Simon Albrecht <simon@simonalbrecht.ch>",
   "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
+    "lint:fix": "yarn run lint -- --fix",
+    "build": "rm -rf ./dist/* && tsc",
+    "start": "node ./dist/index.js",
+    "dev": "nodemon --watch './src/**/*.ts' --exec 'node --experimental-specifier-resolution=node --loader ts-node/esm' src/index.ts"
+  },
   "volta": {
     "node": "20.10.0",
     "yarn": "1.22.21"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "fastify": "^4.25.2",
+    "node-fetch": "^3.3.2",
+    "prom-client": "^15.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "@typescript-eslint/eslint-plugin": "^6.16.0",
+    "@typescript-eslint/parser": "^6.16.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.2",
+    "nodemon": "^3.0.2",
+    "prettier": "^3.1.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
   }
 }
