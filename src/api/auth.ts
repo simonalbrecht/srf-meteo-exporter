@@ -2,12 +2,12 @@ import { DEFAULT_OAUTH_ACCESS_TOKEN_URL, USER_AGENT } from '../constants.js'
 import { logger } from '../logger.js'
 import { addSeconds, formatISO } from 'date-fns'
 import { AccessToken, AccessTokenResponse } from '../types.js'
-import { canRequest, trackSuccessfulRequest } from '../rate-limiter.js'
+import { isRateLimited, trackSuccessfulRequest } from '../rate-limiter.js'
 import { mockedAccessToken } from '../mock-data.js'
 import { isDevelopmentMode } from '../env.js'
 
 export const fetchAccessToken = async () => {
-    if (!canRequest()) {
+    if (isRateLimited()) {
         logger.warn('Request quota has been used up. Cannot fetch access token')
         return null
     }

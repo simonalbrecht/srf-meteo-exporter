@@ -27,7 +27,7 @@ export const trackSuccessfulRequest = () => {
     increaseRequestsToday()
 }
 
-export const canRequest = () => {
+export const isRateLimited = () => {
     // Check if it's a new day and the quota can be reset
     const lastRequestTime = parseISO(getLastRequestTime())
     const now = new Date()
@@ -36,5 +36,5 @@ export const canRequest = () => {
         resetRequestsToday()
     }
 
-    return getRemainingRequests() > 0
+    return getRemainingRequests() <= 0
 }

@@ -3,7 +3,7 @@ import { resetRequestsToday, setAccessToken, setLocation } from './state.js'
 import { logger } from './logger.js'
 import { setCache } from './cache.js'
 import {
-    canRequest,
+    isRateLimited,
     getInterval,
     getRemainingRequests,
     trackSuccessfulRequest,
@@ -43,7 +43,7 @@ export const refreshAccessToken = async () => {
 }
 
 export const startPollingData = async () => {
-    if (!canRequest()) {
+    if (isRateLimited()) {
         logger.error('Request quota has been used up, cannot request new data')
         process.exit(1)
     }
@@ -91,7 +91,7 @@ export const startPollingData = async () => {
 }
 
 const fetchForecast = async (locationId: string, zip: string | number) => {
-    if (!canRequest()) {
+    if (isRateLimited()) {
         logger.warn(
             {
                 locationId,
