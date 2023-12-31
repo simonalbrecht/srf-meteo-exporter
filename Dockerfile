@@ -15,6 +15,7 @@ WORKDIR /app
 COPY package.json yarn.lock ./
 COPY --from=build /app/.env .env
 COPY --from=build /app/dist dist
+COPY --from=build /app/public public
 RUN yarn install --frozen-lockfile --production=true
 
 ENV HOST 0.0.0.0
