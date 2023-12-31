@@ -1,5 +1,9 @@
-import * as dotenv from 'dotenv'
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+import dotenv from 'dotenv'
 import fastify from 'fastify'
+import fastifyStatic from '@fastify/static'
 
 import { logger } from './logger.js'
 import { validateEnvironment } from './env.js'
@@ -14,6 +18,9 @@ import { initCache } from './cache.js'
 import { registerMetrics } from './metrics.js'
 import { startAccessTokenAutoRefresh, startPollingData } from './poller.js'
 
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
 dotenv.config()
 logger.level = process.env.LOG_LEVEL || 'info'
 
@@ -26,6 +33,11 @@ registerMetrics()
 
 const server = fastify({
     logger,
+})
+
+server.register(fastifyStatic, {
+    root: path.join(__dirname, '..', 'public', 'meteo-icons'),
+    prefix: '/meteo-icons/',
 })
 
 server.get('/', handleRoot)

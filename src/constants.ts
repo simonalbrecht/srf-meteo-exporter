@@ -35,3 +35,9 @@ export const LABEL_NAMES = {
     SUNSHINE_DURATION: 'Sunshine Duration',
     UV_INDEX: 'UV Index',
 }
+
+export const ICONS_PATH_PREFIX = {
+    COLOR: '/meteo-icons/color/',
+    DARK: '/meteo-icons/dark/',
+    LIGHT: '/meteo-icons/light/',
+}
