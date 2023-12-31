@@ -2,6 +2,7 @@ FROM node:21-alpine as build
 WORKDIR /app
 
 COPY package.json yarn.lock tsconfig.json ./
+COPY public public
 COPY src src
 COPY .env.example .env
 
