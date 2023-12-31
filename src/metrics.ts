@@ -8,6 +8,7 @@ import {
 } from './types.js'
 import { parseISO } from 'date-fns'
 import { LABEL_NAMES } from './constants.js'
+import { isRateLimited } from './rate-limiter.js'
 
 const commonLabelNames = [
     'time_period',
@@ -34,6 +35,13 @@ const version = new client.Gauge({
 })
 
 weatherRegistry.registerMetric(version)
+
+const rateLimit = new client.Gauge({
+    name: 'meteo_rate_limit_info',
+    help: 'Information if application is rate limited',
+})
+
+weatherRegistry.registerMetric(rateLimit)
 
 const symbolCode = new client.Gauge({
     name: 'meteo_symbol_index',
@@ -206,6 +214,8 @@ export const registerMetrics = () => {
 }
 
 export const updateMetrics = (forecast: Forecast, location: Location) => {
+    rateLimit.set({}, isRateLimited() ? 1 : 0)
+
     updateHourlyMetrics(forecast.hourly, location)
     updateHourlyMetrics(forecast.threeHourly, location)
     updateDailyMetrics(forecast.daily, location)
