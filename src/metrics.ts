@@ -7,7 +7,7 @@ import {
     TimePeriod,
 } from './types.js'
 import { parseISO } from 'date-fns'
-import { LABEL_NAMES } from './constants.js'
+import { EXPORTER_VERSION, LABEL_NAMES } from './constants.js'
 import { isRateLimited } from './rate-limiter.js'
 
 const commonLabelNames = [
@@ -210,7 +210,7 @@ export const registries = client.Registry.merge([
 
 export const registerMetrics = () => {
     collectDefaultMetrics({ register: registries })
-    version.set({ version: process.env.npm_package_version }, 1)
+    version.set({ version: EXPORTER_VERSION }, 1)
 }
 
 export const updateMetrics = (forecast: Forecast, location: Location) => {

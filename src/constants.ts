@@ -1,3 +1,5 @@
+export const EXPORTER_VERSION = '0.0.0'
+
 export const DEFAULT_DATA_PATH = '/var/lib/srf-meteo-exporter'
 export const DEFAULT_REQUEST_QUOTA_PER_DAY = 50 // Free plan
 export const DEFAULT_ACCESS_TOKEN_REFRESH_INTERVAL = 604800000 - 3600000 // 7 days minus 1 hour (to account for time slip)
@@ -9,7 +11,7 @@ export const DAY_MILLISECONDS = 86400000
 export const STATE_FILE_NAME = 'state.json'
 export const CACHE_FILE_NAME = 'cache.json'
 
-export const USER_AGENT = 'github:simonalbrecht/srf-meteo-exporter'
+export const USER_AGENT = `github:simonalbrecht/srf-meteo-exporter/${EXPORTER_VERSION}`
 
 export const LABEL_NAMES = {
     SYMBOL_CODE: 'Symbol',
