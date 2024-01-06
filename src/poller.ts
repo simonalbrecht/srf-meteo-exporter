@@ -10,7 +10,7 @@ import {
 } from './rate-limiter.js'
 import { isDevelopmentMode } from './env.js'
 import { fetchAccessToken } from './api/auth.js'
-import { DEFAULT_ACCESS_TOKEN_REFRESH_INTERVAL } from './constants.js'
+import { DEFAULT_OAUTH_ACCESS_TOKEN_REFRESH_INTERVAL } from './constants.js'
 
 export const startAccessTokenAutoRefresh = async () => {
     if (isDevelopmentMode()) {
@@ -21,8 +21,8 @@ export const startAccessTokenAutoRefresh = async () => {
     await refreshAccessToken()
 
     const interval = parseInt(
-        process.env.ACCESS_TOKEN_REFRESH_INTERVAL ??
-            `${DEFAULT_ACCESS_TOKEN_REFRESH_INTERVAL}`
+        process.env.OAUTH_ACCESS_TOKEN_REFRESH_INTERVAL ??
+            `${DEFAULT_OAUTH_ACCESS_TOKEN_REFRESH_INTERVAL}`
     )
 
     setInterval(async () => {

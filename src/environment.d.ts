@@ -7,7 +7,7 @@ declare global {
             REQUEST_QUOTA_PER_DAY?: string
             METEO_API_BASE_URL?: string
             OAUTH_ACCESS_TOKEN_URL?: string
-            ACCESS_TOKEN_REFRESH_INTERVAL?: string
+            OAUTH_ACCESS_TOKEN_REFRESH_INTERVAL?: string
             LOG_LEVEL?: string
             DATA_PATH?: string
             NODE_ENV?: string
