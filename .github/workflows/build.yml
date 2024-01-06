@@ -27,11 +27,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Determine Metadata
-        id: metadata
-        run: |
-          echo "::set-output name=version::$(cat package.json | jq -r .version)"
-
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
