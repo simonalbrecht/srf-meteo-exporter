@@ -1,6 +1,6 @@
 # SRF Meteo Exporter
 
-Prometheus Metrics exporter for the weather and forecast data provided by [SRF Meteo API](https://developer.srgssr.ch/api-catalog/srf-weather). It exposes the current weather data for the current hour, for the next 3 hours and for the current day.
+Prometheus Metrics exporter for the weather and forecast data provided by the [SRF Meteo API](https://developer.srgssr.ch/api-catalog/srf-weather). It exposes the weather data for the current hour, for the next 3 hours and for the current day.
 
 ![Grafana Dashboard](docs/grafana-dashboard.png)
 
@@ -43,7 +43,7 @@ Once started, visit [http://localhost:3000/metrics](http://localhost:3000/metric
 | DATA_PATH | Path to where to store the state and cache data | `./data` | ❌ |
 
 ### Grafana Dashboard
-A basic example Grafana dashboard is available with [grafana/srf-meteo-exporter.json](grafana/srf-meteo-exporter.json).
+A basic example Grafana dashboard is provided with [grafana/srf-meteo-exporter.json](grafana/srf-meteo-exporter.json).
 
 ## Development
 ### Setup
@@ -70,7 +70,7 @@ yarn dev
 
 The server will start on [http://localhost:3000](http://localhost:3000).
 
-To disable the use of mock data and instead use the real data from the API, change `NODE_ENV=development` on the `dev` script in `package.json` to `NODE_ENV=production`. ⚠️ This may cause you to run over the API request quota rather quickly! 
+To disable the use of mock data and instead use the real data from the API, change `NODE_ENV=development` on the `dev` script in `package.json` to `NODE_ENV=production`. ⚠️ This may cause you to run into the API rate-limits rather quickly! 
 
 ### Production Mode
 To run the application in production mode, run the following:
@@ -98,4 +98,4 @@ yarn lint:fix
 ## Copyright
 All Weather and Forecast Data is Copyright by SRG-SSR.
 
-Exporter Code is Copyright Simon Albrecht, licensed under the MIT License.
+SRF Meteo Exporter is Copyright Simon Albrecht, licensed under the MIT License.
