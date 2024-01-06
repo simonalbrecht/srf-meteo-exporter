@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:  
+  pollen-exporter:
+    hostname: pollen-exporter
+    image: ghcr.io/simonalbrecht/srf-meteo-exporter:latest
+    restart: unless-stopped
+    ports:
+      - "9335:3000"
+    env_file:
+      - .env
