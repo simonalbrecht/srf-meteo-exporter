@@ -1,4 +1,4 @@
-import { USER_AGENT } from '../constants.js'
+import { DEFAULT_METEO_API_BASE_URL, USER_AGENT } from '../constants.js'
 import {
     GeoLocationLookupResponse,
     ForecastResponse,
@@ -103,7 +103,9 @@ export const findLocation = async (
             })
 
             const response = await fetch(
-                `${process.env.METEO_API_BASE_URL}/geolocationNames?zip=${zip}`,
+                `${
+                    process.env.METEO_API_BASE_URL ?? DEFAULT_METEO_API_BASE_URL
+                }/geolocationNames?zip=${zip}`,
                 {
                     method: 'GET',
                     headers,
@@ -187,7 +189,9 @@ export const getForecast = async (
             })
 
             const response = await fetch(
-                `${process.env.METEO_API_BASE_URL}/forecastpoint/${locationId}`,
+                `${
+                    process.env.METEO_API_BASE_URL ?? DEFAULT_METEO_API_BASE_URL
+                }/forecastpoint/${locationId}`,
                 {
                     method: 'GET',
                     headers,

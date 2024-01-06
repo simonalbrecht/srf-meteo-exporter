@@ -22,20 +22,6 @@ export const validateEnvironment = () => {
         process.exit(1)
     }
 
-    if (!process.env.OAUTH_ACCESS_TOKEN_URL) {
-        logger.error(
-            `OAUTH_ACCESS_TOKEN_URL environment variable is missing. Cannot start!`
-        )
-        process.exit(1)
-    }
-
-    if (!process.env.METEO_API_BASE_URL) {
-        logger.error(
-            `METEO_API_BASE_URL environment variable is missing. Cannot start!`
-        )
-        process.exit(1)
-    }
-
     if (isDevelopmentMode()) {
         logger.warn(
             'Application is development mode. No actual requests will be done; mock data will be used instead!'
