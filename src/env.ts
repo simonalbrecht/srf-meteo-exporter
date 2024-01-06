@@ -15,6 +15,13 @@ export const validateEnvironment = () => {
         process.exit(1)
     }
 
+    if (!process.env.LOCATION_ZIP) {
+        logger.error(
+            `LOCATION_ZIP environment variable is missing. Cannot start!`
+        )
+        process.exit(1)
+    }
+
     if (!process.env.OAUTH_ACCESS_TOKEN_URL) {
         logger.error(
             `OAUTH_ACCESS_TOKEN_URL environment variable is missing. Cannot start!`
