@@ -32,4 +32,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{ github.repository_owner }}/srf-meteo-exporter:${{ steps.metadata.outputs.version }},${{ github.repository_owner }}/srf-meteo-exporter:latest
+          tags: ghcr.io/${{ github.repository_owner }}/srf-meteo-exporter:${{ steps.metadata.outputs.version }},ghcr.io/${{ github.repository_owner }}/srf-meteo-exporter:latest
