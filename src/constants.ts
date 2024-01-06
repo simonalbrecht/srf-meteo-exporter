@@ -18,7 +18,7 @@ export const LABEL_NAMES = {
     RAIN_PROBABILITY: 'Rain Probability',
     TOTAL_RAINFALL: 'Total Rainfall',
     AVG_WIND_SPEED: 'Wind Speed',
-    AVG_GUST_SPEED: 'Gust Speed',
+    AVG_GUST_SPEED: 'Gust of Wind Speed',
     WIND_DIRECTION: 'Wind Direction',
     TEMPERATURE: 'Temperature',
     FEELS_LIKE_TEMPERATURE: 'Feels Like',
