@@ -37,10 +37,11 @@ Once started, visit [http://localhost:3000/metrics](http://localhost:3000/metric
 | `PORT` | On which port the server should listen | `3000` | ❌ |
 | `REQUEST_QUOTA_PER_DAY` | The number of requests available per day included in the API Plan | `50` | ❌ |
 | `METEO_API_BASE_URL` | The base API URL to use for the API | `https://api.srgssr.ch/srf-meteo/v2` | ❌ |
-| `OAUTH_ACCESS_TOKEN_URL` | The URL from which to obtain the OAuth access token | `https://api.srgssr.ch/oauth/v1/accesstoken?grant_type=client_credentials` | ❌ |
+| `OAUTH_ACCESS_TOKEN_URL` | The URL from which to obtain the OAuth access token. If it is an empty string, OAuth will be skipped. | `https://api.srgssr.ch/oauth/v1/accesstoken?grant_type=client_credentials` | ❌ |
 | `OAUTH_ACCESS_TOKEN_REFRESH_INTERVAL` | The refresh interval of the OAuth access token in milliseconds | `601200000` | ❌ |
 | `LOG_LEVEL` | The [pino](https://github.com/pinojs/pino) log level to use for logs | `info` | ❌ |
 | DATA_PATH | Path to where to store the state and cache data | `./data` | ❌ |
+| MOCKED | Use mocked data instead of fetching real requests | `false` | ❌ |
 
 ### Grafana Dashboard
 A basic example Grafana dashboard is provided with [grafana/srf-meteo-exporter.json](grafana/srf-meteo-exporter.json).

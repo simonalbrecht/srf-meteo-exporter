@@ -22,13 +22,21 @@ export const validateEnvironment = () => {
         process.exit(1)
     }
 
-    if (isDevelopmentMode()) {
+    if (isMocked()) {
         logger.warn(
-            'Application is development mode. No actual requests will be done; mock data will be used instead!'
+            'Application is in mocked mode. No actual requests will be done; mock data will be used instead!'
         )
     }
 }
 
 export const isDevelopmentMode = () => {
     return process.env.NODE_ENV === 'development'
+}
+
+export const isMocked = () => {
+    return process.env.MOCKED === 'true'
+}
+
+export const isAuthSkipped = () => {
+    return process.env.OAUTH_ACCESS_TOKEN_URL === ''
 }

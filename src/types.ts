@@ -114,7 +114,7 @@ export type HourlyForecastResponse = {
     TTH_C: number // upper bound of expected temperature range in celsius
     DEWPOINT_C: number // Dewpoint
     RELHUM_PERCENT: number // Relative air humidity
-    FRESHSNOW_CM: number // Fresh snow in the hour before event
+    FRESHSNOW_MM: number // Fresh snow in the hour before event
     PRESSURE_HPA: number // Barometric pressure
     SUN_MIN: number // Sunshine duration in the hour before event
     IRRADIANCE_WM2: number // Global irradiance

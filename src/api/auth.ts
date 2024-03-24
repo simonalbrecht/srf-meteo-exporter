@@ -4,7 +4,7 @@ import { addSeconds, formatISO } from 'date-fns'
 import { AccessToken, AccessTokenResponse } from '../types.js'
 import { isRateLimited, trackSuccessfulRequest } from '../rate-limiter.js'
 import { mockedAccessToken } from '../mock-data.js'
-import { isDevelopmentMode } from '../env.js'
+import { isMocked } from '../env.js'
 
 export const fetchAccessToken = async () => {
     if (isRateLimited()) {
@@ -24,7 +24,7 @@ export const fetchAccessToken = async () => {
         )
 
         let data: AccessTokenResponse
-        if (!isDevelopmentMode()) {
+        if (!isMocked()) {
             const auth = Buffer.from(
                 `${consumerKey}:${consumerSecret}`
             ).toString('base64')
