@@ -1136,7 +1136,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "builder",
-          "expr": "meteo_fresh_snow_centimeters{time_period=\"hourly\", instance=\"$instance\"} / 10",
+          "expr": "meteo_fresh_snow_millimeters{time_period=\"hourly\", instance=\"$instance\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,

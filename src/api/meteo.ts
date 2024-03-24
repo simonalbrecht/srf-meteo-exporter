@@ -75,7 +75,7 @@ const mapHourlyForecast = (
             humidity: hour.RELHUM_PERCENT,
             pressure: hour.PRESSURE_HPA,
             sunshineDuration: hour.SUN_MIN,
-            freshSnowAmount: hour.FRESHSNOW_CM,
+            freshSnowAmount: hour.FRESHSNOW_MM,
             irradiance: hour.IRRADIANCE_WM2,
             timePeriod,
         }

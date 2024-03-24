@@ -197,8 +197,8 @@ export const sunshineDuration = new client.Gauge({
 weatherRegistry.registerMetric(sunshineDuration)
 
 export const freshSnowAmount = new client.Gauge({
-    name: 'meteo_fresh_snow_centimeters',
-    help: 'Fresh snow amount in Centimeters',
+    name: 'meteo_fresh_snow_millimeters',
+    help: 'Fresh snow amount in Millimeters',
     labelNames: commonLabelNames,
 })
 
