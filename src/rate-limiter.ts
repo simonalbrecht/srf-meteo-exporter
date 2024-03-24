@@ -7,6 +7,7 @@ import {
     resetRequestsToday,
     updateLastRequestTime,
 } from './state.js'
+import { isAuthSkipped } from './env.js'
 
 export const getRequestQuota = (): number => {
     return parseInt(
@@ -15,10 +16,18 @@ export const getRequestQuota = (): number => {
 }
 
 export const getRemainingRequests = () => {
+    if (isAuthSkipped()) {
+        return Number.MAX_VALUE
+    }
+
     return getRequestQuota() - getRequestsToday()
 }
 
 export const getInterval = () => {
+    if (isAuthSkipped()) {
+        return 1000 * 60 * 5 // 5 min
+    }
+
     return Math.floor(DAY_MILLISECONDS / getRequestQuota())
 }
 
@@ -28,6 +37,10 @@ export const trackSuccessfulRequest = () => {
 }
 
 export const isRateLimited = () => {
+    if (isAuthSkipped()) {
+        return false
+    }
+
     // Check if it's a new day and the quota can be reset
     const lastRequestTime = parseISO(getLastRequestTime())
     const now = new Date()

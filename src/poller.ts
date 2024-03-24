@@ -8,12 +8,20 @@ import {
     getRemainingRequests,
     trackSuccessfulRequest,
 } from './rate-limiter.js'
-import { isDevelopmentMode } from './env.js'
+import { isAuthSkipped, isMocked } from './env.js'
 import { fetchAccessToken } from './api/auth.js'
 import { DEFAULT_OAUTH_ACCESS_TOKEN_REFRESH_INTERVAL } from './constants.js'
 
 export const startAccessTokenAutoRefresh = async () => {
-    if (isDevelopmentMode()) {
+    if (isAuthSkipped()) {
+        logger.info('Authentication is disabled')
+
+        setAccessToken(undefined)
+        resetRequestsToday()
+        return
+    }
+
+    if (isMocked()) {
         resetRequestsToday()
     }
 
@@ -48,7 +56,7 @@ export const startPollingData = async () => {
         process.exit(1)
     }
 
-    const interval = isDevelopmentMode() ? 5000 : getInterval()
+    const interval = isMocked() ? 5000 : getInterval()
 
     // First, fetch the location information and store it in the state
     const zip = process.env.LOCATION_ZIP || ''

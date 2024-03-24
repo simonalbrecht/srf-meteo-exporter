@@ -4,7 +4,7 @@ import { updateMetrics, collectMetrics } from '../metrics.js'
 import { DailyForecast, Forecast, HourlyForecast } from '../types.js'
 import { getCache } from '../cache.js'
 import { getLocation } from '../state.js'
-import { isDevelopmentMode } from '../env.js'
+import { isMocked } from '../env.js'
 
 const filterCurrentForecast = (): Forecast | null => {
     const forecast: Forecast = getCache() as Forecast
@@ -35,7 +35,7 @@ const keepOnlyCurrentForecast = (forecast: DailyForecast | HourlyForecast) => {
     const forecastDate = parseISO(forecast.date)
     const currentDate = new Date()
 
-    if (isDevelopmentMode()) {
+    if (isMocked()) {
         return true
     }
 

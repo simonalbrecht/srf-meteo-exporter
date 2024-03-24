@@ -39,7 +39,7 @@ export const getAccessToken = (): AccessToken | undefined => {
     return accessToken
 }
 
-export const setAccessToken = (accessToken: AccessToken) => {
+export const setAccessToken = (accessToken?: AccessToken) => {
     const state = getState()
 
     setState({

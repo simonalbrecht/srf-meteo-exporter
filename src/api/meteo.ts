@@ -13,7 +13,7 @@ import {
 import { logger } from '../logger.js'
 import { mockedForecastData, mockedGeoLocationData } from '../mock-data.js'
 import { isAfter, isBefore, parseISO } from 'date-fns'
-import { isDevelopmentMode } from '../env.js'
+import { isAuthSkipped, isMocked } from '../env.js'
 import { getAccessToken } from '../state.js'
 
 const mapDailyForecast = (day: DailyForecastResponse): DailyForecast => {
@@ -93,7 +93,7 @@ export const findLocation = async (
     )
 
     let data: GeoLocationLookupResponse[] = []
-    if (!isDevelopmentMode()) {
+    if (!isMocked()) {
         try {
             const accessToken = getAccessToken()
             const headers = new Headers({
@@ -179,14 +179,17 @@ export const getForecast = async (
     )
 
     let data: ForecastResponse | undefined = undefined
-    if (!isDevelopmentMode()) {
+    if (!isMocked()) {
         try {
             const accessToken = getAccessToken()
             const headers = new Headers({
                 'User-Agent': USER_AGENT,
-                Authorization: `Bearer ${accessToken?.token}`,
                 'Cache-Control': 'no-cache',
             })
+
+            if (!isAuthSkipped()) {
+                headers.set('Authorization', `Bearer ${accessToken?.token}`)
+            }
 
             const response = await fetch(
                 `${

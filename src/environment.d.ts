@@ -11,6 +11,7 @@ declare global {
             LOG_LEVEL?: string
             DATA_PATH?: string
             NODE_ENV?: string
+            MOCKED?: string
         }
     }
 }
