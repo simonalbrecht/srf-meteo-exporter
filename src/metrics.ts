@@ -57,7 +57,7 @@ weatherRegistry.registerMetric(rateLimit)
 const symbolCode = new client.Gauge({
     name: 'meteo_symbol_index',
     help: 'The code for the weather symbol',
-    labelNames: commonLabelNames,
+    labelNames: [...commonLabelNames, 'text'],
 })
 
 weatherRegistry.registerMetric(symbolCode)
@@ -65,7 +65,7 @@ weatherRegistry.registerMetric(symbolCode)
 const symbol24Code = new client.Gauge({
     name: 'meteo_symbol24_index',
     help: 'The code for the weather symbol24',
-    labelNames: commonLabelNames,
+    labelNames: [...commonLabelNames, 'text'],
 })
 
 weatherRegistry.registerMetric(symbol24Code)
@@ -287,11 +287,11 @@ const updateHourlyMetrics = (
     const [forecast] = forecasts
 
     symbolCode.set(
-        getLabels(forecast.timePeriod, location, LABEL_NAMES.SYMBOL_CODE),
+        getLabels(forecast.timePeriod, location, forecast.symbolText),
         forecast.symbolCode
     )
     symbol24Code.set(
-        getLabels(forecast.timePeriod, location, LABEL_NAMES.SYMBOL24_CODE),
+        getLabels(forecast.timePeriod, location, forecast.symbol24Text),
         forecast.symbol24Code
     )
     rainProbability.set(
@@ -364,8 +364,12 @@ const updateDailyMetrics = (forecasts: DailyForecast[], location: Location) => {
     const [forecast] = forecasts
 
     symbolCode.set(
-        getLabels(forecast.timePeriod, location, LABEL_NAMES.SYMBOL_CODE),
+        getLabels(forecast.timePeriod, location, forecast.symbolText),
         forecast.symbolCode
+    )
+    symbol24Code.set(
+        getLabels(forecast.timePeriod, location, forecast.symbol24Text),
+        forecast.symbol24Code
     )
     rainProbability.set(
         getLabels(forecast.timePeriod, location, LABEL_NAMES.RAIN_PROBABILITY),

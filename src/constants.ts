@@ -15,8 +15,6 @@ export const CACHE_FILE_NAME = 'cache.json'
 export const USER_AGENT = `github:simonalbrecht/srf-meteo-exporter/${EXPORTER_VERSION}`
 
 export const LABEL_NAMES = {
-    SYMBOL_CODE: 'Symbol Code',
-    SYMBOL24_CODE: 'Symbol 24 Code',
     RAIN_PROBABILITY: 'Rain Probability',
     TOTAL_RAINFALL: 'Total Rainfall',
     AVG_WIND_SPEED: 'Wind Speed',
