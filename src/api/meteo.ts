@@ -292,11 +292,16 @@ export const getSymbols = async (): Promise<{
             if (response.status !== 200) {
                 logger.error(
                     { code: response.status, status: response.status },
-                    'Error fetching symbol information information. Received non-200 status code'
+                    'Error fetching symbol information information. Received non-200 status code. Will return static data instead.'
                 )
+
+                // Until symbols is public behind the SRG SSR API gateway (not via direct link), return
+                // mocked data in case of errors
+                const { symbol_text = {}, symbol24_text = {} } =
+                    mockedSymbolData
                 return {
-                    symbolTexts: {},
-                    symbol24Texts: {},
+                    symbolTexts: symbol_text,
+                    symbol24Texts: symbol24_text,
                 }
             }
 
