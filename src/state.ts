@@ -18,8 +18,8 @@ export const initState = () => {
             requestsToday: 0,
             lastRequestTime: undefined,
             location: undefined,
-            symbols: undefined,
-            symbols24: undefined,
+            symbolTexts: undefined,
+            symbol24Texts: undefined,
         }
 
         setState(state)
