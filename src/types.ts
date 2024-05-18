@@ -86,6 +86,7 @@ export type DailyForecastResponse = {
 export type DailyForecast = {
     date: string
     symbolCode: number
+    symbol24Code: number
     rainProbability: number
     totalRainfall: number
     averageWindSpeed: number
@@ -125,6 +126,7 @@ export type HourlyForecastResponse = {
 export type HourlyForecast = {
     date: string
     symbolCode: number
+    symbol24Code: number
     rainProbability: number
     totalRainfall: number
     averageWindSpeed: number

@@ -40,6 +40,12 @@ server.register(fastifyStatic, {
     prefix: '/meteo-icons/',
 })
 
+server.register(fastifyStatic, {
+    root: path.join(__dirname, '..', 'public', 'meteo-icons-24'),
+    prefix: '/meteo-icons-24/',
+    decorateReply: false,
+})
+
 server.get('/', handleRoot)
 server.get('/debug/state', handleDebugState)
 server.get('/debug/cache', handleDebugCache)

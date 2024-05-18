@@ -20,6 +20,7 @@ const mapDailyForecast = (day: DailyForecastResponse): DailyForecast => {
     return {
         date: day.date_time,
         symbolCode: day.symbol_code,
+        symbol24Code: day.symbol24_code,
         rainProbability: day.PROBPCP_PERCENT,
         totalRainfall: day.RRR_MM,
         averageWindSpeed: day.FF_KMH,
@@ -62,6 +63,7 @@ const mapHourlyForecast = (
         return {
             date: hour.date_time,
             symbolCode: hour.symbol_code,
+            symbol24Code: hour.symbol24_code,
             rainProbability: hour.PROBPCP_PERCENT,
             totalRainfall: hour.RRR_MM,
             averageWindSpeed: hour.FF_KMH,

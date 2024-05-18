@@ -40,6 +40,8 @@ const version = new client.Gauge({
         'colorIconsPathPrefix',
         'darkIconsPathPrefix',
         'lightIconsPathPrefix',
+        'darkIcons24PathPrefix',
+        'lightIcons24PathPrefix',
     ] as const,
 })
 
@@ -59,6 +61,14 @@ const symbolCode = new client.Gauge({
 })
 
 weatherRegistry.registerMetric(symbolCode)
+
+const symbol24Code = new client.Gauge({
+    name: 'meteo_symbol24_index',
+    help: 'The code for the weather symbol24',
+    labelNames: commonLabelNames,
+})
+
+weatherRegistry.registerMetric(symbol24Code)
 
 const rainProbability = new client.Gauge({
     name: 'meteo_rain_probability_percentages',
@@ -225,6 +235,8 @@ export const registerMetrics = () => {
             colorIconsPathPrefix: ICONS_PATH_PREFIX.COLOR,
             darkIconsPathPrefix: ICONS_PATH_PREFIX.DARK,
             lightIconsPathPrefix: ICONS_PATH_PREFIX.LIGHT,
+            darkIcons24PathPrefix: ICONS_PATH_PREFIX['24_DARK'],
+            lightIcons24PathPrefix: ICONS_PATH_PREFIX['24_LIGHT'],
         },
         1
     )
@@ -277,6 +289,10 @@ const updateHourlyMetrics = (
     symbolCode.set(
         getLabels(forecast.timePeriod, location, LABEL_NAMES.SYMBOL_CODE),
         forecast.symbolCode
+    )
+    symbol24Code.set(
+        getLabels(forecast.timePeriod, location, LABEL_NAMES.SYMBOL24_CODE),
+        forecast.symbol24Code
     )
     rainProbability.set(
         getLabels(forecast.timePeriod, location, LABEL_NAMES.RAIN_PROBABILITY),
