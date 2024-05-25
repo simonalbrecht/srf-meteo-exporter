@@ -1,5 +1,11 @@
-import { findLocation, getForecast } from './api/meteo.js'
-import { resetRequestsToday, setAccessToken, setLocation } from './state.js'
+import { findLocation, getForecast, getSymbols } from './api/meteo.js'
+import {
+    resetRequestsToday,
+    setAccessToken,
+    setLocation,
+    setSymbol24Texts,
+    setSymbolTexts,
+} from './state.js'
 import { logger } from './logger.js'
 import { setCache } from './cache.js'
 import {
@@ -80,6 +86,12 @@ export const startPollingData = async () => {
         }
 
         setLocation(location)
+        trackSuccessfulRequest()
+
+        // Then fetch the symbol texts and store them in the cache
+        const { symbolTexts, symbol24Texts } = await getSymbols()
+        setSymbolTexts(symbolTexts)
+        setSymbol24Texts(symbol24Texts)
         trackSuccessfulRequest()
 
         await fetchForecast(location.id, zip)

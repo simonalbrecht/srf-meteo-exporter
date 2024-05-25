@@ -6,7 +6,7 @@ import {
     readFile,
     writeFile,
 } from './storage.js'
-import { AccessToken, State, Location } from './types.js'
+import { AccessToken, State, Location, SymbolTexts } from './types.js'
 
 export const initState = () => {
     initStorage()
@@ -18,6 +18,8 @@ export const initState = () => {
             requestsToday: 0,
             lastRequestTime: undefined,
             location: undefined,
+            symbolTexts: undefined,
+            symbol24Texts: undefined,
         }
 
         setState(state)
@@ -59,6 +61,34 @@ export const setLocation = (location: Location) => {
     setState({
         ...state,
         location,
+    })
+}
+
+export const getSymbolTexts = (): SymbolTexts => {
+    const { symbolTexts } = getState()
+    return symbolTexts ?? {}
+}
+
+export const setSymbolTexts = (symbolTexts: SymbolTexts) => {
+    const state = getState()
+
+    setState({
+        ...state,
+        symbolTexts,
+    })
+}
+
+export const getSymbol24Texts = (): SymbolTexts => {
+    const { symbol24Texts } = getState()
+    return symbol24Texts ?? {}
+}
+
+export const setSymbol24Texts = (symbol24Texts: SymbolTexts) => {
+    const state = getState()
+
+    setState({
+        ...state,
+        symbol24Texts,
     })
 }
 

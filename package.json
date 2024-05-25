@@ -1,6 +1,6 @@
 {
   "name": "srf-meteo-exporter",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Prometheus Exporter for SRF Meteo Data",
   "main": "./src/index.ts",
   "exports": "./dist/index.js",
@@ -40,5 +40,8 @@
     "ts-node": "^10.9.2",
     "tsx": "^4.7.1",
     "typescript": "^5.4.3"
+  },
+  "resolutions": {
+    "strip-ansi": "6.0.1"
   }
 }

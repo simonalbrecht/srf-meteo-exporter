@@ -26,11 +26,17 @@ export type Location = {
     zip: number
 }
 
+export type SymbolTexts = {
+    [key: string]: string
+}
+
 export type State = {
     accessToken?: AccessToken
     requestsToday?: number
     lastRequestTime?: string
     location?: Location
+    symbolTexts?: SymbolTexts
+    symbol24Texts?: SymbolTexts
 }
 
 export type Cache = Forecast | undefined
@@ -64,6 +70,11 @@ export type TemperatureColor = {
 
 export type TimePeriod = 'daily' | 'three_hourly' | 'hourly'
 
+export type SymbolsResponse = {
+    symbol24_text: SymbolTexts
+    symbol_text: SymbolTexts
+}
+
 export type DailyForecastResponse = {
     date_time: string
     symbol_code: number
@@ -86,6 +97,9 @@ export type DailyForecastResponse = {
 export type DailyForecast = {
     date: string
     symbolCode: number
+    symbolText: string
+    symbol24Code: number
+    symbol24Text: string
     rainProbability: number
     totalRainfall: number
     averageWindSpeed: number
@@ -125,6 +139,9 @@ export type HourlyForecastResponse = {
 export type HourlyForecast = {
     date: string
     symbolCode: number
+    symbolText: string
+    symbol24Code: number
+    symbol24Text: string
     rainProbability: number
     totalRainfall: number
     averageWindSpeed: number

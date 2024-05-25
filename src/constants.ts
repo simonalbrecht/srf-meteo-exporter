@@ -15,11 +15,10 @@ export const CACHE_FILE_NAME = 'cache.json'
 export const USER_AGENT = `github:simonalbrecht/srf-meteo-exporter/${EXPORTER_VERSION}`
 
 export const LABEL_NAMES = {
-    SYMBOL_CODE: 'Symbol',
     RAIN_PROBABILITY: 'Rain Probability',
     TOTAL_RAINFALL: 'Total Rainfall',
     AVG_WIND_SPEED: 'Wind Speed',
-    AVG_GUST_SPEED: 'Gust of Wind Speed',
+    AVG_GUST_SPEED: 'Gusts',
     WIND_DIRECTION: 'Wind Direction',
     TEMPERATURE: 'Temperature',
     FEELS_LIKE_TEMPERATURE: 'Feels Like',
@@ -41,4 +40,6 @@ export const ICONS_PATH_PREFIX = {
     COLOR: '/meteo-icons/color/',
     DARK: '/meteo-icons/dark/',
     LIGHT: '/meteo-icons/light/',
+    '24_DARK': '/meteo-icons-24/dark/',
+    '24_LIGHT': '/meteo-icons-24/light/',
 }

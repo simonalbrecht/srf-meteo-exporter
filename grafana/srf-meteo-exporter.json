@@ -27,7 +27,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "10.2.3"
+      "version": "11.0.0"
     },
     {
       "type": "datasource",
@@ -96,10 +96,10 @@
         "x": 0,
         "y": 1
       },
-      "id": 8,
+      "id": 20,
       "options": {
-        "alt_field": "",
-        "baseUrl": "http://$instance/meteo-icons/color/",
+        "alt_field": "label",
+        "baseUrl": "http://$instance/meteo-icons-24/dark/",
         "height": "75",
         "icon_field": "",
         "open_url": {
@@ -139,10 +139,10 @@
           "transition": "Slide",
           "transition_duration": 1000
         },
-        "suffix": ".svg",
-        "tooltip": false,
+        "suffix": ".png",
+        "tooltip": true,
         "tooltip_date_elapsed": false,
-        "tooltip_field": "",
+        "tooltip_field": "label",
         "tooltip_include_date": false,
         "tooltip_include_field": true,
         "underline": {
@@ -167,17 +167,49 @@
           "disableTextWrap": false,
           "editorMode": "builder",
           "exemplar": false,
-          "expr": "meteo_symbol_index{time_period=\"hourly\", instance=\"$instance\"}",
+          "expr": "meteo_symbol24_index{time_period=\"hourly\", instance=\"$instance\"}",
+          "format": "time_series",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": true,
+          "interval": "",
           "legendFormat": "__auto",
           "range": false,
           "refId": "A",
           "useBackend": false
         }
       ],
-      "title": "Condition",
+      "title": "Weather",
+      "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {
+            "mode": "columns"
+          }
+        },
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "Time"
+              }
+            ]
+          }
+        },
+        {
+          "id": "limit",
+          "options": {
+            "limitField": 1
+          }
+        }
+      ],
       "type": "dalvany-image-panel"
     },
     {
@@ -306,6 +338,7 @@
         "y": 1
       },
       "id": 1,
+      "interval": "30m",
       "options": {
         "legend": {
           "calcs": [],
@@ -314,6 +347,7 @@
           "showLegend": true
         },
         "tooltip": {
+          "maxHeight": 600,
           "mode": "multi",
           "sort": "desc"
         }
@@ -530,6 +564,7 @@
         "y": 1
       },
       "id": 2,
+      "interval": "30m",
       "options": {
         "legend": {
           "calcs": [],
@@ -538,6 +573,7 @@
           "showLegend": true
         },
         "tooltip": {
+          "maxHeight": 600,
           "mode": "multi",
           "sort": "desc"
         }
@@ -635,7 +671,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -830,10 +866,11 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -894,6 +931,7 @@
         "y": 15
       },
       "id": 6,
+      "interval": "30m",
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -906,10 +944,11 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -971,6 +1010,7 @@
         "y": 15
       },
       "id": 7,
+      "interval": "30m",
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -983,10 +1023,11 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -1042,6 +1083,7 @@
         "y": 15
       },
       "id": 11,
+      "interval": "30m",
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -1054,10 +1096,11 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -1112,6 +1155,7 @@
         "y": 15
       },
       "id": 12,
+      "interval": "30m",
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -1124,10 +1168,11 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -1174,10 +1219,10 @@
         "x": 0,
         "y": 23
       },
-      "id": 13,
+      "id": 21,
       "options": {
-        "alt_field": "",
-        "baseUrl": "http://$instance/meteo-icons/color/",
+        "alt_field": "label",
+        "baseUrl": "http://$instance/meteo-icons-24/dark/",
         "height": "75",
         "icon_field": "",
         "open_url": {
@@ -1217,10 +1262,10 @@
           "transition": "Slide",
           "transition_duration": 1000
         },
-        "suffix": ".svg",
-        "tooltip": false,
+        "suffix": ".png",
+        "tooltip": true,
         "tooltip_date_elapsed": false,
-        "tooltip_field": "",
+        "tooltip_field": "label",
         "tooltip_include_date": false,
         "tooltip_include_field": true,
         "underline": {
@@ -1245,17 +1290,49 @@
           "disableTextWrap": false,
           "editorMode": "builder",
           "exemplar": false,
-          "expr": "meteo_symbol_index{time_period=\"daily\", instance=\"$instance\"}",
+          "expr": "meteo_symbol24_index{time_period=\"daily\", instance=\"$instance\"}",
+          "format": "time_series",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": true,
+          "interval": "",
           "legendFormat": "__auto",
           "range": false,
           "refId": "A",
           "useBackend": false
         }
       ],
-      "title": "Condition",
+      "title": "Weather",
+      "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {
+            "mode": "columns"
+          }
+        },
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "Time"
+              }
+            ]
+          }
+        },
+        {
+          "id": "limit",
+          "options": {
+            "limitField": 1
+          }
+        }
+      ],
       "type": "dalvany-image-panel"
     },
     {
@@ -1276,7 +1353,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1307,11 +1385,12 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -1367,7 +1446,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -1421,11 +1501,12 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -1482,7 +1563,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1516,7 +1598,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -1683,7 +1765,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -1710,10 +1793,11 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -1751,7 +1835,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -1778,11 +1863,12 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
         "textMode": "value_and_name",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -1842,7 +1928,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -1896,11 +1983,12 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
         "textMode": "value_and_name",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -1973,13 +2061,14 @@
     ]
   },
   "time": {
-    "from": "now-12h",
+    "from": "now-24h",
     "to": "now"
   },
+  "timeRangeUpdatedDuringEditOrView": false,
   "timepicker": {},
   "timezone": "",
   "title": "SRF Meteo Exporter",
   "uid": "c5a9dd3a-8b71-4e7f-b4ad-2b5295f72b5d",
-  "version": 2,
+  "version": 18,
   "weekStart": ""
 }
